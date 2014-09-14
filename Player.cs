@@ -9,21 +9,20 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update () {
-		//Detecta Quando esta andando
-		if (Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.S) || Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D)) {
-			Andando = true;
-		} 
-		else {
-			Andando = false;
-		}
 		//Aceleraçao ao correr (shift)
 		if(Input.GetKey (KeyCode.LeftShift) && VelAnda <= 15){
 			VelAnda += 0.5f;
 		}
+		//Desaceleração também
 		else if(!Input.GetKey (KeyCode.LeftShift) && VelAnda > 10){
 			VelAnda -= 0.5f;
 		}
-		//Movimentos basicos
+		/*******************************
+		Movimentos basicos
+		transform.translate = muda a posição do objeto
+		time.deltatime = faz com que a velocidade dependa do tempo (m/s) e não dos FPS, 
+		já que o Void update() executa a cada quadro.
+		********************* *********/
 		    if (Input.GetKey (KeyCode.W)) {
 			transform.Translate(0,0,VelAnda*Time.deltaTime);
 		}
